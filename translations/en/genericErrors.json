@@ -1,0 +1,37 @@
+{
+  "header_required": "Header is a required field",
+    "bobject": {
+    "notice": {
+      "create": "Woot! Object created successfully.",
+      "update": "Woot! Object updated successfully.",
+      "delete": "Woot! Object deleted successfully.",
+      "deleteAll": "Woot! {{count}} object(s) were deleted successfully.",
+      "deleteNone": "No objects were deleted. Either the query returned zero objects or you don't have enough permission to delete these objects.",
+      "bulkUpdate": "Bulk update on {{count}} objects was successful.",
+      "revert": "Woot! The object was reverted successfully to version {{version}}."
+    },
+    "error": {
+      "operation": "Bummer. Object operation failed.",
+      "create": "Bummer. Object creation failed. Please enter valid data.",
+      "notFound": "Bummer. The requested object doesn't exist.",
+      "update": "Bummer. Object update failed. Please enter valid data.",
+      "delete": "Bummer. Object deletion failed. Please try again.",
+      "deleteAll": "Bummer. Objects deletion failed. Please try again.",
+      "upsert": "Bummer. Upsert failed. Multiple matching objects were found.",
+      "getAll": "Bummer. Failed to fetch objects. Please try again with valid parameters.",
+      "get": "Bummer. Failed to fetch object. Please try again with valid parameters.",
+      "ability": "This call is not available for this class.",
+      "revert": "Bummer. The revert could not be done.",
+      "bulkUpdate": "Bulk update failed.",
+      "tags_length": "Maximum number of tags allowed per object are {{tags_length}}",
+      "tag_length": "Each tag can be at most {{tag_length}} characters long",
+      "indexKeyLimit": "The total size of an index entry, must be less than 1024 bytes",
+      "fetchUpload": "Bummer. Uploads cannot be fetched with this call.",
+      "latitude": "Should be in range of -90 to 90",
+      "longitude": "Should be in range of -180 to 180",
+      "inc": "has an invalid mathematical operation",
+      "addSub": "validation failed",
+      "default": "Bummer. Cannot set the default object as false."
+    }
+  }
+}

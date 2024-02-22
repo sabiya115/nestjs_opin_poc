@@ -1,0 +1,846 @@
+{
+
+    "user defined": "{{path}} references a non existing ID",
+    "default_error_message": "Something went wrong. Please contact NBA support.",
+    "application": {
+      "not_found": "Application not found",
+      "application_data": "Application data",
+      "master_key": "Master key not found or invalid.",
+      "application_list": "Application list.",
+      "success": {
+        "created": "Application created successfully.",
+        "updated": "Application updated successfully.",
+        "deleted": "Application deleted successfully."
+      },
+      "error": {
+        "created": "Application creation failed.",
+        "updated": "Application updation failed.",
+        "deleted": "Application deletion failed."
+      }
+    },
+    "generic_errors": {
+      "prerequisite": "Unable to execute API call",
+      "api_call_disabled": "The API call has been disabled",
+      "invalidPayload": "please send a valid payload"
+    },
+    "string": {
+      "empty": "Empty or invalid string type is not allowed.",
+      "base" : "Empty or invalid string type is not allowed.",
+      "email": "Value is not a valid email address.",
+      "alphanum": "Only alphanumeric value is allowed.",
+      "base64":"Only base64 string is allowed.",
+      "uppercase":"Only uppercase characters are allowed.",
+      "lowercase": "Only lowercase characters are allowed.",
+      "dataUri": "Value is not a valid URI.",
+      "domain": "Value is not a valid domain name.",
+      "guid": "Value is not in a valid GUID format.",
+      "isoDate": "Date is not in valid ISO format.",
+      "isoDuration": "Duration is not in valid ISO format.",
+      "length": "String does not match its specified length.",
+      "max": "String length is longer than its maximum limit.",
+      "min": "String length is shorter than its minium limit.",
+      "trim": "String contains whitespace around it.",
+      "pattern": {
+        "base": "String value does not match regular expressions.",
+        "name": "String value does not match named regular expressions.",
+        "invert": {
+          "base": "String value match regular expressions, While it shouldn't.",
+          "name": "String value match named regular expressions, While it shouldn't"
+        }
+      }
+
+    },
+    "number": {
+      "base": "Only valid Integer characters are allowed.",
+      "infinity": "Only valid Integer characters are allowed.",
+      "greater": "Number should be greater than specified limit.",
+      "less": "Number should be less than specified limit.",
+      "max": "Digits exceeded maximum limit.",
+      "min": "Digits below minimum limit.",
+      "multiple": "Number is not multiple of the base value.",
+      "negative": "Number is not negative.",
+      "positive": "Number is not positive.",
+      "integer": "Number is not an integer.",
+      "unsafe" : "Number is not within JavaScript safety range."
+    },
+    "object": {
+      "base" : "Value is an invalid Object type.",
+      "and" : "AND condition not satisfied by the Object.",
+      "assert": "Failed to pass the Object assertion test.",
+      "instance":"Object is not of the specified type.",
+      "unknown": "Unexpected property found in Object.",
+      "length": "Number of keys in the Object is not of the specified length.",
+      "max": "Number of keys in the Object exceeded the maximum limit.",
+      "min": "Number of keys in the Object is lower than the minimum limit.",
+      "nand": "NAND condition not satisfied by the Object.",
+      "missing": "OR and XOR condition not satisfied by the Object.",
+      "oxor": "OXOR condition not satisfied by the Object.",
+      "pattern": {
+        "match": "Object keys failed to match pattern."
+      },
+      "refType" : "Object is not a Joi reference.",
+      "regex" : "Object is not a regular expression.",
+      "rename" : {
+        "multiple": "Target property was already renamed.",
+        "override": "Target property already exists."
+      },
+      "with": "Key that is supposed to be present is missing.",
+      "without": "Key that is supposed to be missing is present.",
+      "xor": "XOR condition not satisfied by the Object.",
+      "schema": "Invalid schema."
+    },
+    "boolean":{
+      "base": "Schema Object does not match boolean values.",
+      "greater": "Date is earlier than the specified date.",
+      "format" : "Date is not in valid ISO format.",
+      "less" : "Date is later than the specified date.",
+      "max" : "Date is not the latest specified.",
+      "min": "Date is not the oldest specified."
+    },
+    "array": {
+      "base": "value is not of Array type",
+      "excludes": "array contains a value that is part of the exclusion list.",
+      "includesRequiredBoth": "values were expected to be present in the array and are missing, while we have a mix of labeled and unlabeled schemas.",
+      "includesRequiredKnowns": "values were expected to be present in the array and are missing, while we only have labeled schemas",
+      "includesRequiredUnknowns": "values were expected to be present in the array and are missing, while when we only have unlabeled schemas.",
+      "includes": "value didn't match any of the allowed types for that array.",
+      "length" : "array is not of the expected length.",
+      "max": "array has more elements than the maximum allowed.",
+      "min": "array has less elements than the minimum allowed.",
+      "orderedLength": "array has more elements than it should.",
+      "sort": "array did not match the required sort order.",
+      "sparse": "An undefined value was found in an array that shouldn't be sparse.",
+      "unique": "A duplicate value was found in an array.",
+      "hasKnown": "The schema on an array.has() was not found in the array, while the schema is labeled.",
+      "hasUnknown": "The schema on an array.has() was not found in the array. while the schema is unlabeled."
+    },
+    "any" : {
+      "custom": "a custom validation method threw an exception.",
+      "default": " any.default() generator function throws error, you will have it here.",
+      "failover": "any.failover() generator function throws error, you will have it here.",
+      "invalid": "value matched a value listed in the invalid values.",
+      "only": "only some values were allowed, the input didn't match any of them.",
+      "ref": "a reference was used in rule argument and the value pointed to by that reference in the input is not valid.",
+      "required": "a required value wasn't present.",
+      "unknown": "a value was present while it wasn't expected."
+    },
+    "genericErrors": {
+      "unique": "is not unique",
+      "invalid": "is invalid",
+      "notFound": "was not found",
+      "inc_min": "is not valid minimum operation",
+      "inc_max": "is not valid maximum operation",
+      "min": "is less than the minimum value {{min}}",
+      "max": "is greater than the maximum value {{max}}",
+      "minLength": "should have a minimum length of {{min}}",
+      "maxLength": "should have a maximum length of {{max}}",
+      "inclusion": "is not included in the list of valid values",
+      "regex": "does not match the required format for the field",
+      "wrapper": "Please send your attributes wrapped in '{{wrapper}}'",
+      "castError": "should be a {{val}}",
+      "mandatory": "is a required field",
+      "isNotMultiple": "is not multiple",
+      "isMultiple": "should be a single value instead of multiple",
+      "dataType": "is not {{dataType}}",
+      "link": "is not a valid URL",
+      "referenceArray": "should be an array",
+      "referenceExist": "The class referred to by this field does not exist.",
+      "reference": "is not a valid reference",
+      "isodate": "is not a valid isodate",
+      "fileExist": "is not a valid upload",
+      "invalidArrayOperation": "has an invalid array operation.",
+      "invalidOperation": "has an invalid operation.",
+      "emptyData": "update param should not be empty",
+      "invalidUpdateOperation": "have invalid update operation(s). Please check if they were performed on null values.",
+      "invalid_enum_value": "{{val}} is not a valid enum value for {{path}}",
+      "alreadyExist": "already exist in the system.",
+      "header_required": "is required in header.",
+      "isEmpty": "is empty"
+    },
+    "partner": {
+      "error": {
+        "getAll": "Oops! Partner couldn't be fetched",
+        "partner_uid_required": "should be sent in request headers",
+        "update": "Unable to update partner",
+        "not_found": "Partner not found",
+        "partner_role_missing":"Partner role missing for partner uid : {{partnerUID}}",
+        "partner_role_maping_missing":"Partner role mapping missing for partner uid : {{partnerUID}}"
+      }
+    },
+    "partner_configurations": {
+      "error": {
+        "missing_login_details": "is mandatory as the Login Type is set to {{{loginType}}}",
+        "get_failed": "Unable to fetch record. Please enter valid query",
+        "create_failed": "Unable to create record. Please enter valid data",
+        "update_failed": "Unable to update record. Please enter valid data",
+        "delete_failed": "Unable to delete record. Please enter valid data",
+        "invalid_login_type": "Invalid login type",
+        "not_found": "Partner configuration not found",
+        "save_login_type_not_allowed": "Cannot save {{loginType}} as it is not set in Settings",
+        "loggers_get_all": "Unable to fetch loggers",
+        "validate_config_failed": "Unable to validate the partner configuration",
+        "platform_required": "Please provide a value for platform in headers||params||payload",
+        "device_id_required": "Please provide a value for device_id in headers||params||payload",
+        "invalid_date": "Invalid date. Please provide valid date",
+        "auto_renew_not_supported": "doesn't support auto subscription renewal",
+        "login_banner_check_missing": "Please provide partner is Login or Banner type",
+        "invalid_workflow_type": "Please select either login only, banner only or Both",
+        "enable_job_for_transaction_based": "Job execution for Transaction-based partners can be enabled."
+      },
+      "success": {
+        "created": "Partner configuration created successfully",
+        "update": "Partner configuration updated successfully",
+        "deleted": "Partner configuration deleted successfully",
+        "published": "Partner configuration published successfully",
+        "unpublished": "Partner configuration unpublished successfully",
+        "cron_published": "Partner configuration will be published at given time",
+        "cron_unpublished": "Partner configuration will be unpublished at given time"
+      }
+    },
+    "themes": {
+      "error": {
+        "missing_default": "Default value is missing",
+        "update": "Unable to update theme",
+        "delete_default": "Default theme cannot be deleted"
+      },
+      "success": {
+        "update": "Theme updated successfully",
+        "not_found": "Partner theme not found"
+      }
+    },
+    "object": {
+      "error": {
+        "default_class_object": "Class can have only one object"
+      }
+    },
+    "upload": {
+      "success": {
+        "created": "Woot! File created successfully.",
+        "updated": "Woot! File updated successfully.",
+        "deleted": "Woot! File deleted successfully.",
+        "defaultAcl": "Woot! Default ACL updated successfully."
+      },
+      "error": {
+        "file_size": "should be greater than 0 kb.",
+        "tags_length": "Maximum number of tags allowed per upload are {{tags_length}}",
+        "tag_length": "Each tag can be at most {{tag_length}} characters long"
+      },
+      "errorMessages": {
+        "created": "Bummer. File creation failed. Please try again.",
+        "updated": "Bummer. File update failed. Please try again.",
+        "deleted": "Bummer. File delete failed. Please try again.",
+        "getAll": "Bummer. Failed to fetch uploads. Please try again with valid parameters.",
+        "blankMessage": "Bummer. Message cannot be blank.",
+        "blankChannel": "Bummer. Channel cannot be blank.",
+        "invalidParameters": "Please provide valid parameters.",
+        "invalid": "Oops! That file was not found.",
+        "invalidUploadID": "Bummer. The provided upload ID in invalid",
+        "defaultAcl": "Bummer. The default ACL could not be updated."
+      }
+    },
+    "screen": {
+      "error": {
+        "not_found": "Screen not found"
+      }
+    },
+    "screen_translation": {
+      "error": {
+        "getAll": "Unable to get translations",
+        "reset": "Unable to reset translation",
+        "create": "Unable to create translation",
+        "delete_default": "Default en_* locale translation cannot be deleted"
+      },
+      "success": {
+        "reset": "Translation reset to default successfully",
+        "resetNone": "Unable to reset partner translation",
+        "create": "Translation created successfully",
+        "update": "Translation updated successfully"
+      }
+    },
+    "system_error_code": {
+      "error": {
+        "notFound": "System code not found. Please try again with a valid code"
+      }
+    },
+    "partner_error_code": {
+      "error": {
+        "getAll": "Unable to fetch partner codes. Please try again with valid data",
+        "notFound": "Unable to find partner code. Please try again with valid data",
+        "create": "Unable to create partner code. Please try again with valid data",
+        "update": "Unable to update partner code. Please try again with valid data",
+        "delete": "Unable to delete partner code. Please try again with valid data"
+      },
+      "success": {
+        "create": "Partner code created successfully",
+        "update": "Partner code updated successfully",
+        "delete": "Partner code deleted successfully"
+      }
+    },
+    "generic_translations": {
+      "error": {
+        "getAll": "Unable to fetch translations. Please try again with valid data",
+        "notFound": "Unable to find translation. Please try again with valid data",
+        "create": "Unable to create translation. Please try again with valid data",
+        "update": "Unable to update translation. Please try again with valid data",
+        "delete": "Unable to delete translation. Please try again with valid data",
+        "delete_enUS": "locale translation cannot be deleted"
+      },
+      "success": {
+        "create": "Translation created successfully",
+        "update": "Translation updated successfully",
+        "delete": "Translation deleted successfully"
+      }
+    },
+    "locale": {
+      "error": {
+        "invalid": "Please provide a value for locale in headers||params||payload",
+        "defaultLocaleUpdate": "en_* cannot be updated",
+        "defaultLocaleDelete": "en_* cannot be deleted"
+      }
+    },
+    "additional_filters":{
+      "error":{
+        "create": "Cannot create a new additional_filter with the name same as the default Additional Filters",
+        "update": "Cannot update fields other than description and is_default for Additional Filters",
+        "delete": "Cannot delete default Additional Filters",
+        "is_default": "Cannot update default"
+      }
+    },
+    "translation_tags":{
+      "error":{
+        "create": "Cannot create a new Translation Tag with the name same as the default.",
+        "update": "Cannot update a Translation Tag name to same name as default.",
+        "defaultUpdate": "Cannot update default Translation Tag name.",
+        "delete": "Cannot delete default Translation Tag."
+      }
+    },
+    "referenceExists": "Reference exists for {{{referenceField}}} field in class {{{referenceClassUID}}}",
+    "import":{
+      "error":{
+        "create": "Cannot import Partner/Partner Configuration(s)"
+      },
+      "success":{
+        "create": "Partner/Partner Configuration(s) created successfully."
+      }
+    },
+    "export":{
+      "error":{
+        "get": "Cannot export Partner/Partner Configuration(s)"
+      },
+      "success":{
+        "get": "Partner/Partner Configuration(s) exported successfully."
+      }
+    },
+    "subscription_details": {
+      "error": {
+        "invalid_subscription_type": "was set to {{subscription_type}} in settings"
+      }
+    },
+    "packages": {
+      "error": {
+        "invalid_end_date": "should be greater than start_date"
+      }
+    },
+    "applicationUser": {
+      "error" : {
+        "accessDenied" : "Access Denied"
+      }
+    },
+    "application_role": {
+      "error": {
+        "operation_restricted": "Operation is restricted as role's name is admin role name.",
+        "invalid_data":"Invalid data provided."
+      }
+    },
+    "application_user_role_mapping": {
+      "success": {
+        "created": "User Role Mapping created successfully",
+        "updated": "User Role Mapping updated successfully",
+        "deleted": "User Role Mapping deleted successfully"
+      },
+      "error"         : {
+        "getAll"      : "Unable to fetch User Role Mappings",
+        "created"     : "Unable to create User Role Mapping",
+        "updated"     : "Unable to update User Role Mapping",
+        "deleted"     : "Unable to delete User Role Mapping",
+        "invalid_data": "Invalid data provided."
+      }
+    },
+    "sku_mapping": {
+      "success": {
+        "created": "SKU Mapping created successfully",
+        "updated": "SKU Mapping updated successfully",
+        "deleted": "SKU Mapping deleted successfully"
+      },
+      "error": {
+        "getAll": "Unable to fetch SKU Mappings",
+        "created": "Unable to create SKU Mapping",
+        "updated": "Unable to update SKU Mapping",
+        "deleted": "Unable to delete SKU Mapping",
+        "not_found": "Requested subscription not found"
+      }
+    },
+    "user": {
+      "success": {
+        "create": "User created successfully",
+        "login": "User logged in successfully",
+        "delete": "User has been deleted successfully",
+        "invite": "Invitation sent successfully.",
+        "forgot_password": "Password reset instructions sent successfully.",
+        "reset_password": "Password reset successful.",
+        "register_via_invite": "Successfully registered via invitation.",
+        "register": "User registered successfully.",
+        "deactivate": "User deactivated successfully.",
+        "activate": "User activated successfully."
+      },
+      "error": {
+        "inactive":"Bummer. Couldn't help you with your password. Please Try Again. user, Your account is not yet activated!",
+        "getAll": "Oops! Application users not found",
+        "notFound": "Application user not found",
+        "notAdded": "Oops! User couldn't be added. Please try again",
+        "notDeleted": "Oops! User couldn't be deleted. Please try again",
+        "invalidPermission": "Oops! Permission provided is invalid.",
+        "emailsAlreadyExists": "{{emailid}} already exists.",
+        "not_admin_user": "Logged in user should be a Admin user.",
+        "not_super_admin_user": "Logged in user should be a Super Admin user.",
+        "access_denied": "Access denied. You have insufficient permissions to perform this operation.",
+        "current": "Unable to fetch current user's data",
+        "invite" : "Unable to send invitation.",
+        "loggedInUserInvite": "Can't invite logged in user.",
+        "forgot_password": "Password reset instruction failed, Please try again",
+        "reset_password": "Password reset instruction failed, Please try again",
+        "register_via_invite": "Unable to register via invitation.",
+        "login": "User login failed.",
+        "deactivate": "User deactivation failed.",
+        "activate": "User activation failed.",
+        "invitePending": "User invite is pending",
+        "alreadyInactive": "User is already inactive.",
+        "alreadyActive": "User is already active.",
+        "loggedInUserDeactivate": "Can't deactivate logged in user.",
+        "notAdminDeactivate": "Only admins are permitted to deactivate a user.",
+        "notAdminActivate": "Only admins are permitted to activate a user.",
+        "doesntExist": "User doesn't exist.",
+        "notAllowedToUpdateAdminUserType" : "Not allowed to update Admin's user type.",
+        "adminCantActivateAdmin" : "Admin user cannot activate other admin user.",
+        "adminCantDeactivateAdmin" : "Admin user cannot deactivate other admin user."
+      }
+    },
+    "entitlements": {
+      "error": {
+        "getAll": "Oops! Entitlements couldn't be fetched"
+      }
+    },
+    "partner_description": {
+      "success": {
+        "created": "Partner description created successfully",
+        "updated": "Partner description updated successfully",
+        "deleted": "Partner description deleted successfully"
+      },
+      "error": {
+        "getAll": "Error while getting all",
+        "not_found": "Oops! Partner descriptions not found",
+        "created": "Unable to create partner description. Please try again with valid data",
+        "updated": "Unable to update partner description. Please try again with valid data",
+        "deleted": "Unable to delete partner description. Please try again with valid data"
+      }
+    },
+    "partner_banner": {
+      "success": {
+        "created": "Partner's banner translation created successfully",
+        "updated": "Partner's banner translation updated successfully",
+        "deleted": "Partner's banner translation deleted successfully"
+      },
+      "error": {
+        "not_found": "Oops! Partner's banner translation not found",
+        "created": "Unable to create Partner's banner translation. Please try again with valid data",
+        "updated": "Unable to update Partner's banner translation. Please try again with valid data",
+        "deleted": "Unable to delete Partner's banner translation. Please try again with valid data",
+        "invalid_login_type": "Cannot save banner configuration and translations if partner is login only ",
+        "invalid_platform": "Cannot save banner configuration and translations if platform is not defined in filtration criteria"
+      }
+    },
+    "partner_banner_configuration": {
+      "success": {
+        "created": "Partner Banner Configuration created successfully",
+        "updated": "Partner Banner Configuration updated successfully",
+        "deleted": "Partner Banner Configuration deleted successfully"
+      },
+      "error": {
+        "getAll": "Oops! Partner Banner Configuration not found",
+        "not_found": "Oops! Partner Banner Configuration not found",
+        "created": "Unable to create Partner Banner Configuration. Please try again with valid data",
+        "updated": "Unable to update Partner Banner Configuration. Please try again with valid data",
+        "deleted": "Unable to delete Partner Banner Configuration. Please try again with valid data",
+        "invalidLink": "Invalid link, Please try again with valid data",
+        "invalid_login_type": "Cannot save banner configuration and translations if partner is login only ",
+        "invalid_platform": "Cannot save banner configuration and translations if platform is not defined in filtration criteria"
+      }
+    },
+    "report_exception": {
+      "success": {
+        "triggered": "Expection mail sent successfully"
+      },
+      "error": {
+        "triggered": "Unable to send expection mail"
+      }
+    },
+    "endpoint_details": {
+      "success": {
+        "created": "Endpoint Detail created successfully",
+        "updated": "Endpoint Detail updated successfully",
+        "deleted": "Endpoint Detail deleted successfully"
+      },
+      "error": {
+        "getAll": "Oops! Endpoint Details not found",
+        "not_found": "Oops! Endpoint Details not found",
+        "created": "Unable to create endpoint detail. Please try again with valid data",
+        "updated": "Unable to update endpoint detail. Please try again with valid data",
+        "deleted": "Unable to delete endpoint detail. Please try again with valid data"
+      }
+    },
+    "common_endpoint_details": {
+      "success": {
+        "created": "Endpoint Detail created successfully",
+        "updated": "Endpoint Detail updated successfully",
+        "deleted": "Endpoint Detail deleted successfully"
+      },
+      "error": {
+        "getAll": "Oops! Endpoint Details not found",
+        "not_found": "Oops! Endpoint Details not found",
+        "created": "Unable to create endpoint detail. Please try again with valid data",
+        "updated": "Unable to update endpoint detail. Please try again with valid data",
+        "deleted": "Unable to delete endpoint detail. Please try again with valid data"
+      }
+    },
+    "log_id": {
+      "success": {
+        "created": "Log id generated successfully"
+      },
+      "error": {
+        "created": "Unable to generate log id"
+      }
+    },
+    "ip_groups": {
+      "error": {
+        "regex_failure": "Invalid IP Address"
+      }
+    },
+    "partner_additional_key": {
+      "success": {
+        "created": "Additional Translation Key created successfully",
+        "updated": "Additional Translation Key updated successfully",
+        "deleted": "Additional Translation Key deleted successfully"
+      },
+      "error": {
+        "getAll": "Oops! Additional Translation Keys not found",
+        "not_found": "Oops! Additional Translation Key not found",
+        "created": "Unable to create Additional Translation Key. Please try again with valid data",
+        "updated": "Unable to update Additional Translation Key. Please try again with valid data",
+        "deleted": "Unable to delete Additional Translation Key. Please try again with valid data"
+      }
+    },
+    "partner_schedule": {
+      "success": {
+        "create": "Schedule created successfully",
+        "delete": "Schedule cancelled successfully"
+      },
+      "error": {
+        "invalid_date": "Please provide valid future date",
+        "create": "Unable to create schedule",
+        "invalid_state": "The partner is already in {{{publish_state}}} state",
+        "schedule_already_exists": "Schedule already exists",
+        "schedule_doesnt_exists": "Schedule does not exist",
+        "delete": "Unable to cancel schedule"
+      }
+    },
+    "cascadingCreates": {
+      "error": {
+        "created": "cannot create a new dependency"
+      }
+    },
+    "report_settings": {
+      "success": {
+        "created": "Report settings created successfully",
+        "getAll": "Report settings got successfully",
+        "updated": "Report settings updated successfully"
+      },
+      "error": {
+        "getAll": "Unable to fetch the report settings",
+        "created": "Unable to create the report settings",
+        "updated": "Unable to update the report settings"
+      }
+    },
+    "reports": {
+      "error_type": {
+        "success": {
+          "created": "Error reports created successfully",
+          "getAll": "Report settings got successfully"
+        },
+        "error": {
+          "getAll": "Unable to fetch the error reports",
+          "created": "Unable to create the error reports",
+          "filter":"Filter is blank or invalid",
+          "invalid_date": "Invalid date. Please provide valid date"
+        }
+      },
+      "error": {
+        "get":"Could not fetch report data",
+        "create": "Unable to create Report"
+      }
+    },
+    "discount_mapping": {
+      "success": {
+        "create": "Discount Mapping created successfully",
+        "update": "Discount Mapping updated successfully",
+        "delete": "Discount Mapping deleted successfully"
+      },
+      "error": {
+        "getAll": "Unable to fetch Discount Mappings",
+        "create": "Unable to create Discount Mapping",
+        "update": "Unable to update Discount Mapping",
+        "delete": "Unable to delete Discount Mapping",
+        "internal_subscription": "Only single discount mapping is allowed for internal subscription."
+      }
+    },
+    "excel_export": {
+      "success": {
+        "enqueued": "Excel Export Job has been enqued successfully, on completion an email will be sent to {{email_address}}"
+      },
+      "error": {
+        "enqueued": "Unable to export contents in excel. Please contact opin-support@nba.com",
+        "limit_exceeded": "is greater than the max limit of {{limit}}. Please narrow down the filter and try again",
+        "zero_objects": "is zero. Please update filters and try again",
+        "flow_exec_failed": "flow exection failed, Please contact opin-support@nba.com"
+      }
+    },
+    "saml_settings": {
+      "success": {
+        "created": "SAML settings created successfully",
+        "getAll": "SAML settings got successfully",
+        "updated": "SAML settings updated successfully"
+      },
+      "error": {
+        "getAll": "Unable to fetch the SAML settings",
+        "created": "Unable to create the SAML settings",
+        "updated": "Unable to update the SAML settings",
+        "notFound": "SAML Settings not found",
+        "invalidFile": "FileType not supported!. Only file of type {{{file_type}}} can be uploaded."
+      }
+    },
+    "partner_type": {
+      "error": {
+        "not_transaction": "is of type transaction"
+      }
+    },
+    "integration": {
+      "error": {
+        "auto_renew_failed": "Unable to renew subscription. Please try again",
+        "invalid_secret_key": "Unable to process request. Please pass proper credentails"
+      }
+    },
+    "login_redirect_token": {
+      "error": {
+        "notFound": "Login redirect token not found"
+      }
+    },
+    "admin_user_permission": {
+      "error": {
+        "cannot_set_access_for_admin":"Cannot set access for admin users",
+        "user_not_found"      : "User(s) not found",
+        "partner_not_found"   : "Partner(s) not found",
+        "partners_empty"      : "Partner(s) cannot be blank",
+        "role_templates_empty": "Role Template(s) cannot be blank",
+        "role_not_found"  : "Role not found",
+        "update"              : "Unable to update permission",
+        "cannotUpdateOwnPermission"   : "Unable to update own permission"
+      },
+      "success": {
+        "create" : "Permissions created successfully."
+      }
+    },
+    "partner_user_permission": {
+      "error": {
+        "update"                    : "Unable to update permission",
+        "cannotUpdateOwnPermission" : "Unable to update own permission",
+        "delete"                    : "Unable to delete record"
+      },
+      "success": {
+        "userDelete" : "Record deleted successfully."
+      }
+    },
+    "customer_portal_themes": {
+      "error": {
+        "missing_default": "Default value is missing",
+        "update": "Unable to update theme",
+        "delete_default": "Default theme cannot be deleted",
+        "delete_failed": "Unable to delete record."
+      },
+      "success": {
+        "get":"Default Theme value fetched successfully",
+        "update": "Theme updated successfully",
+        "not_found": "theme not found",
+        "delete":"Theme deleted successfully"
+      }
+    },
+    "user_entitlement": {
+      "not_found": "User entitlement not found"
+    },
+    "jobsAPI": {
+      "error": {
+        "invalid_body": "Please add {{{body_key}}} in the body",
+        "job_failed" : "Could not find job detail."
+      }
+    },
+    "jwtCerts": {
+      "error": {
+        "cert_fetch_failed" : "Failed to fetch certs."
+      }
+    },
+    "geo_fences":{
+      "error":{
+        "create": "Cannot create a geofence with incorrect coordinates.",
+        "update": "Cannot update a geofence with incorrect coordinates",
+        "coordinate_not_3d_array":"Coordinate must be a 3d array.",
+        "coordinates_not_number_pair": "Coordinate must be a pair of numbers.",
+        "first_last_coordinate_not_equal": "First coordinate is not equal to last coordinate.",
+        "coordinates_not_numeric": "Coordinate must be numeric."
+      }
+    },
+    "report_data": {
+      "error": {
+        "get":"Could not fetch report data",
+        "report_not_found":"Report not found"
+      }
+    },
+    "bobject": {
+      "notice": {
+        "create": "Woot! Object created successfully.",
+        "update": "Woot! Object updated successfully.",
+        "delete": "Woot! Object deleted successfully.",
+        "deleteAll": "Woot! {{count}} object(s) were deleted successfully.",
+        "deleteNone": "No objects were deleted. Either the query returned zero objects or you don't have enough permission to delete these objects.",
+        "bulkUpdate": "Bulk update on {{count}} objects was successful.",
+        "revert": "Woot! The object was reverted successfully to version {{version}}."
+      },
+      "error": {
+        "operation": "Bummer. Object operation failed.",
+        "create": "Bummer. Object creation failed. Please enter valid data.",
+        "notFound": "Bummer. The requested object doesn't exist.",
+        "update": "Bummer. Object update failed. Please enter valid data.",
+        "delete": "Bummer. Object deletion failed. Please try again.",
+        "deleteAll": "Bummer. Objects deletion failed. Please try again.",
+        "upsert": "Bummer. Upsert failed. Multiple matching objects were found.",
+        "getAll": "Bummer. Failed to fetch objects. Please try again with valid parameters.",
+        "get": "Bummer. Failed to fetch object. Please try again with valid parameters.",
+        "ability": "This call is not available for this class.",
+        "revert": "Bummer. The revert could not be done.",
+        "bulkUpdate": "Bulk update failed.",
+        "tags_length": "Maximum number of tags allowed per object are {{tags_length}}",
+        "tag_length": "Each tag can be at most {{tag_length}} characters long",
+        "indexKeyLimit": "The total size of an index entry, must be less than 1024 bytes",
+        "fetchUpload": "Bummer. Uploads cannot be fetched with this call.",
+        "latitude": "Should be in range of -90 to 90",
+        "longitude": "Should be in range of -180 to 180",
+        "inc": "has an invalid mathematical operation",
+        "addSub": "validation failed",
+        "default": "Bummer. Cannot set the default object as false."
+      }
+    },
+    "sso": {
+      "success" : {
+        "ssoConfigurations" : "Woot! SSO configurations added successfully!"
+      },
+      "error" : {
+        "ssoAuthentication" : "Authentication failed. Please check your SSO Settings and try again.",
+        "getAll" : "Bummer. Failed to fetch SSO configurations. Please try again.",
+        "ssoLogin" : "Login failed. Please check your SSO configuration settings and try again.",
+        "ssoConfigurations" : "Failed to add SSO configuration settings. Please check errors for more details.",
+        "ssoUpload" : "should be set to true.",
+        "invalidFile" : "is invalid. Please upload file with {{fileType}} extensions."
+      }
+    },
+    "sdk_session": {
+      "success": {
+        "created": "session data created successfully"
+      },
+      "error": {
+        "get": "Oops! session data not found",
+        "not_found": "Oops! session data not found",
+        "created": "Unable to create session data. Please try again with valid data"
+      }
+    },
+    "jwt_validation": {
+      "error":{
+        "verification": "JWT verification failed."
+      },
+      "success":{
+        "verification": "JWT verified successfully."
+      }
+    },
+    "account_linking":{
+      "success": {
+        "unlinking" :"Account unlinked successfully.",
+        "unlinking_all" :"Accounts unlinked successfully.",
+        "linking" :"Account linked successfully.",
+        "getAll_linked"  : "Linked records fetched successfully",
+        "linking_only_user": "user is having linking_only subscription or inactive subscription. hence, we are not informing to subscription management system.",
+        "get_user_status" : "Linking status fetched successfully.",
+        "NA_for_discount": "OpinS2S inapplicable for discount based."
+      },
+      "error": {
+        "unlinking" :"Account unlinking failed.",
+        "unlinking_all" :"Account unlinking failed.",
+        "missing_auth_header": "Missing authorization header.",
+        "invalid_auth_header": "Invalid authorization header.",
+        "user_entitlement_not_found": "User entitlement not found.",
+        "partner_conf_not_found": "Partner configuration not found.",
+        "cancellation_call_failed": "Cancellation call failed.",
+        "profile_update_failed": "Profile update failed.",
+        "linking" :"Account linking failed.",
+        "getAll" :"Failed to fetch records.",
+        "get_user_status" : "Failed to fetch linking status.",
+        "already_linked_user": "Your accounts are already linked",
+        "endpoint_missing"   : "Endpoint not defined",
+        "discount_unlinking_case_1" : "User discount is expired and unlinked",
+        "discount_unlinking_case_2" : "User discount is valid and linked",
+        "discount_unlinking_case_3" : "User discount is valid and unlinked"
+      }
+    },
+    "products": {
+      "success": {
+        "get"   : "Products fetched successfully!",
+        "getAll": "All product selections fetched successfully!",
+        "create": "Product created successfully!",
+        "update": "Product updated successfully!",
+        "delete": "Product deleted successfully!"
+      },
+      "error": {
+        "get"   : "Product not found.",
+        "getAll": "Failed to fetch Products!",
+        "create": "Product creation failed.",
+        "update": "Product update failed.",
+        "delete": "Product deletion failed.",
+        "not_found": "Product not found",
+        "missing_default": "Default value is missing"
+      }
+    },
+    "template_translations": {
+      "success": {
+        "created": "Template translations created/updated successfully!"
+      },
+      "error": {
+        "created": "Template translations created/updated failed.",
+        "get": "Sorry we could not fetch translation"
+      }
+    },
+    "token": {
+      "success": {
+        "token_is_valid": "Token is valid"
+      },
+      "error": {
+        "token_is_invalid": "Token is invalid",
+        "token_has_expired": "Token has expired",
+        "invalidPayload": "please send a valid payload"
+      }
+    }
+}
