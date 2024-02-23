@@ -41,6 +41,14 @@
   
       credentials: process.env.CORS_CREDENTIALS == 'true' ? true : false,
     },
+    db: {
+      connString: process.env.DBCONNSTRING,
+      dbOptions: {
+        ssl: process.env.DBSSL,
+        sslCAPath: process.env.DBSSLCAPATH,
+        sslCertPath: process.env.DBSSLCERTPATH,
+      },
+    },
     // auth0: {
     //   domain: process.env.AUTH0_DOMAIN,
     //   audience: process.env.AUTH0_AUDIENCE,
