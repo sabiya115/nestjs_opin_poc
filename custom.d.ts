@@ -15,7 +15,14 @@ declare namespace RAW {
 
 declare module "mongoose" {
   // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-unused-vars
-  interface Model<THydratedDocumentType> {
+  interface Model<
+  TRawDocType,
+  TQueryHelpers = {},
+  TInstanceMethods = {},
+  TVirtuals = {},
+  THydratedDocumentType = HydratedDocument<TRawDocType, TVirtuals & TInstanceMethods, TQueryHelpers>,
+  TSchema = any
+  > {
     __excludedScopes: string[];
     __unscoped: boolean;
     createDocument(
@@ -46,6 +53,7 @@ declare module "mongoose" {
       name: string;
       query: Record<string, any>;
     }[];
+    // find(cb: any): any;
   }
 
   // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-unused-vars
@@ -60,6 +68,7 @@ declare module "mongoose" {
       session?: any,
       overrideAccessibles?: any
     ): Promise<T>;
+    save():Promise<T>;
   }
 
   interface Schema {
@@ -81,4 +90,15 @@ declare module "mongoose" {
       class EpochType extends SchemaType {}
     }
   }
+}
+
+declare module express {
+  interface Request {
+    headers: {
+      api_key: string;
+      auth_token: string;
+    }
+  }
+  
+  
 }

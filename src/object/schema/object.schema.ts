@@ -3,10 +3,15 @@ import { IsUppercase } from 'class-validator';
 import { HydratedDocument, PopulatedDoc, Types } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 import { randomBytes } from 'crypto';
+import { Inject } from '@nestjs/common';
+import { REQUEST } from '@nestjs/core';
+import { Request } from 'express';
 
 const random = () => randomBytes(12).toString('hex');
 
-@Schema()
+
+@Schema({
+})
 export class Package {
   @Prop({ type: String, required: true })
   name: string;
@@ -35,7 +40,9 @@ export class Package {
 
 }
 
-export type packageDocument = HydratedDocument<Package>;
+// Object.defineProperty(Package, 'name', {value: `${api_key}.packages`})
+
+export type PackageDocument = HydratedDocument<Package>;
 
 export const PackageSchema = SchemaFactory.createForClass(Package); 
 

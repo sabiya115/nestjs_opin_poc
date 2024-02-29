@@ -475,11 +475,13 @@ export function errorResponse(options: {
   
       this.set(params);
       this.isDelete = true;
+      this.deleted_at = new Date().getTime();
+
   
       return (
         Promise.resolve()
           .then(() => {
-            return this.save({ validateBeforeSave: false, session });
+            return this.save({ validateBeforeSave: false, session});
           })
           /* istanbul ignore next */
   

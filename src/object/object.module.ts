@@ -17,4 +17,6 @@ import { Package, PackageSchema } from './schema/object.schema';
   controllers: [ObjectController],
   providers: [ObjectService, BuiltError],
 })
-export class ObjectModule {}
+export class ObjectModule {
+  
+}

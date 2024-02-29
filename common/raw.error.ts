@@ -44,7 +44,6 @@ export class BuiltError {
    * @param {JSON} errorData Set of the data that express more about the error
    */
   add(path, errorKey, errorData=null) {
-    console.log("coming inside add", path, errorKey);
     this.errors.push({
       errorKey: errorKey,
       path:path,

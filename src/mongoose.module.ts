@@ -6,6 +6,8 @@ import {
   mongooseCorePlugin,
   getMongooseOptions,
 } from '../common/utils';
+import { timePlugin } from "../common/times";
+const idvalidator = require("../common/schemaValidator");
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import {
         uri: configService.get('db.connString'),
         connectionFactory: async (connection: Connection) => {
           connection.plugin(mongooseCorePlugin);
+          connection.plugin(timePlugin);
+          connection.plugin(idvalidator);
           return connection;
         },
         ...getMongooseOptions(configService.get('db.dbOptions')),

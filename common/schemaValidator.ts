@@ -82,6 +82,7 @@ IdValidator.prototype.validateSchema = function (
               resolve(true)
               return
             }
+            //@ts-ignore
             if (!(self instanceof IdValidator) || self.enabled) {
               if (Object.keys(conditionsCopy).length > 0) {
                 var instance = this
