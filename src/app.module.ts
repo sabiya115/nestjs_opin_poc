@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import ServiceConfiguration from '../config/configuration';
 import {RestModule} from "./rest.module";
 import { I18nModule, QueryResolver, AcceptLanguageResolver, HeaderResolver } from 'nestjs-i18n';
@@ -10,6 +10,8 @@ import { MongooseServiceModule } from "./mongoose.module"
 // import { Auth0Module } from 'api/shared/auth0/auth0.module';
 // import { EventEmitterModule } from '@nestjs/event-emitter';
 // import { TransportServiceModule } from 'api/transport.module';
+
+import { ApiKeyMiddleware } from '../common/middlewares';
 
 @Module({
   imports: [
@@ -54,4 +56,8 @@ import { MongooseServiceModule } from "./mongoose.module"
     // TransportServiceModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule{
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(ApiKeyMiddleware).forRoutes('*');
+  }
+}

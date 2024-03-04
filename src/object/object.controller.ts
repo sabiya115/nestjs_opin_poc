@@ -1,10 +1,11 @@
 import { Controller, Delete, Get, HttpException, HttpStatus, Param, Post, Put, Req } from '@nestjs/common';
 import { ObjectService } from './object.service';
-import { Request } from '@nestjs/common';
+import { Request } from 'express';
 import { errorResponse } from 'common/utils';
 import { I18n, I18nContext } from 'nestjs-i18n';
 import { Types } from 'mongoose';
 import { ParseObjectIdPipe } from 'common/pipes';
+import { ApiKey } from 'common/decorators';
 
 @Controller('v1/classes/packages/objects')
 export class ObjectController {
@@ -39,11 +40,13 @@ export class ObjectController {
   //   message: "genericErrors.bobject.error.getAll",
   //   httpStatus: HttpStatus.NOT_FOUND,
   // })
-  async create(@Req() req:Request, @I18n() i18n: I18nContext) {
+  async create(@ApiKey() api_key: string, @Req() req:Request, @I18n() i18n: I18nContext) {
+    console.log("Api key is", api_key, req.headers.authtoken);
     try{
-      await this.appService.createObject(req.headers);
+      await this.appService.createObject({api_key, authtoken: req.headers.authtoken});
     }
     catch(errors) {
+      console.log("Error is", errors);
       throw new HttpException(
         {
           message: i18n.t('genericErrors.bobject.error.getAll'),

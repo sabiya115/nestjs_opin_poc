@@ -6,6 +6,7 @@ import {Document, Model, Schema as MongooseSchema, Types} from "mongoose";
 import { REQUEST } from '@nestjs/core';
 import { Request } from 'express';
 import { getModelForClass } from '@typegoose/typegoose';
+import {createDynamicModel} from "../../common/dynamicModelProvider";
 
 
 @Injectable()
@@ -13,28 +14,30 @@ export class ObjectService {
   constructor(@InjectModel(Package.name) private packageModel: Model<Package>) {
   }
 
-  async createDynamicModel(collectionName) {
+  // async createDynamicModel(collectionName) {
 
-    if (this.packageModel.db.models[collectionName]) {
-      return this.packageModel.db.models[collectionName];
-    }
+  //   if (this.packageModel.db.models[collectionName]) {
+  //     return this.packageModel.db.models[collectionName];
+  //   }
 
-    const schema = new MongooseSchema({}, { collection: collectionName });
-    const dynamicModel = this.packageModel.db.model(collectionName, schema);
-    dynamicModel.schema.add(PackageSchema);
-    return dynamicModel;
-  }
+  //   const schema = new MongooseSchema({}, { collection: collectionName });
+  //   const dynamicModel = this.packageModel.db.model(collectionName, schema);
+  //   dynamicModel.schema.add(PackageSchema);
+  //   return dynamicModel;
+  // }
 
-  async createObject(headers) {
+  async createObject({api_key, authtoken}) {
+    console.log("Coming inside create object");
     const error = new BuiltError();
-    if(!headers.authtoken) {
+    if(!authtoken) {
       error.add("authtoken","genericErrors.header_required");
       throw error;
       
     }
 
-    let collectionName = `${headers.api_key}.packages`;
-    let model = await this.createDynamicModel(collectionName);
+    let collectionName = `${api_key}.packages`;
+    let model = await createDynamicModel(collectionName, this.packageModel, PackageSchema);
+    console.log("Model is", model);
     // @ts-ignore
     const res = await model.createDocument({name: "NBA F1 skyhawks",
     api_key: "some_random_third_key"
@@ -51,7 +54,7 @@ export class ObjectService {
      
     }
    
-    let model = await this.createDynamicModel(collectionName);
+    let model = await createDynamicModel(collectionName, this.packageModel, PackageSchema);
     const res = await model.find({});
 
     return res;
@@ -66,7 +69,7 @@ export class ObjectService {
     }
 
 
-    let model = await this.createDynamicModel(collectionName);
+    let model = await createDynamicModel(collectionName, this.packageModel, PackageSchema);
     const doc = await model.findOne({_id});
     if (!doc) {
       error.add("not found","genericErrors.invalid_id");
@@ -84,7 +87,7 @@ export class ObjectService {
     }
 
 
-    let model = await this.createDynamicModel(collectionName);
+    let model = await createDynamicModel(collectionName, this.packageModel, PackageSchema);
     return await model.findOneAndUpdateDocument({_id},{api_key: "updated_key"});
     
   }
